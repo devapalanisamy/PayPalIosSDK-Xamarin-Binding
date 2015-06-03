@@ -103,9 +103,9 @@ namespace PayPalIosBinding
 	[BaseType (typeof(UINavigationController))]
 	interface PayPalFuturePaymentViewController
 	{
-		// -(instancetype)initWithConfiguration:(PayPalConfiguration *)configuration delegate:(id<PayPalFuturePaymentDelegate>)delegate;
+		// -(instancetype)initWithConfiguration:(PayPalConfiguration *)configuration delegate:(id<PayPalFuturePaymentDelegate>)del;
 		[Export ("initWithConfiguration:delegate:")]
-		IntPtr Constructor (PayPalConfiguration configuration, PayPalFuturePaymentDelegate @delegate);
+		IntPtr Constructor (PayPalConfiguration configuration, PayPalFuturePaymentDelegate @del);
 
 		[Wrap ("WeakFuturePaymentDelegate")]
 		PayPalFuturePaymentDelegate FuturePaymentDelegate { get; }
@@ -115,8 +115,8 @@ namespace PayPalIosBinding
 		NSObject WeakFuturePaymentDelegate { get; }
 	}
 
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
+	//[Verify (ConstantsInterfaceAssociation)]
+	partial interface PaymentConstants
 	{
 		// extern NSString *const kPayPalOAuth2ScopeFuturePayments;
 		[Field ("kPayPalOAuth2ScopeFuturePayments")]
@@ -181,7 +181,7 @@ namespace PayPalIosBinding
 		// +(NSDecimalNumber *)totalPriceForItems:(NSArray *)items;
 		[Static]
 		[Export ("totalPriceForItems:")]
-		[Verify (StronglyTypedNSArray)]
+		//[Verify (StronglyTypedNSArray)]
 		NSDecimalNumber TotalPriceForItems (NSObject[] items);
 
 		// @property (readwrite, copy, nonatomic) NSString * name;
@@ -274,7 +274,7 @@ namespace PayPalIosBinding
 
 		// @property (readwrite, copy, nonatomic) NSArray * items;
 		[Export ("items", ArgumentSemantic.Copy)]
-		[Verify (StronglyTypedNSArray)]
+		//[Verify (StronglyTypedNSArray)]
 		NSObject[] Items { get; set; }
 
 		// @property (readwrite, copy, nonatomic) PayPalShippingAddress * shippingAddress;
@@ -337,9 +337,9 @@ namespace PayPalIosBinding
 	[BaseType (typeof(UINavigationController))]
 	interface PayPalPaymentViewController
 	{
-		// -(instancetype)initWithPayment:(PayPalPayment *)payment configuration:(PayPalConfiguration *)configuration delegate:(id<PayPalPaymentDelegate>)delegate;
+		// -(instancetype)initWithPayment:(PayPalPayment *)payment configuration:(PayPalConfiguration *)configuration delegate:(id<PayPalPaymentDelegate>)del;
 		[Export ("initWithPayment:configuration:delegate:")]
-		IntPtr Constructor (PayPalPayment payment, PayPalConfiguration configuration, PayPalPaymentDelegate @delegate);
+		IntPtr Constructor (PayPalPayment payment, PayPalConfiguration configuration, PayPalPaymentDelegate @del);
 
 		[Wrap ("WeakPaymentDelegate")]
 		PayPalPaymentDelegate PaymentDelegate { get; }
@@ -380,9 +380,9 @@ namespace PayPalIosBinding
 	[BaseType (typeof(UINavigationController))]
 	interface PayPalProfileSharingViewController
 	{
-		// -(instancetype)initWithScopeValues:(NSSet *)scopeValues configuration:(PayPalConfiguration *)configuration delegate:(id<PayPalProfileSharingDelegate>)delegate;
+		// -(instancetype)initWithScopeValues:(NSSet *)scopeValues configuration:(PayPalConfiguration *)configuration delegate:(id<PayPalProfileSharingDelegate>)del;
 		[Export ("initWithScopeValues:configuration:delegate:")]
-		IntPtr Constructor (NSSet scopeValues, PayPalConfiguration configuration, PayPalProfileSharingDelegate @delegate);
+		IntPtr Constructor (NSSet scopeValues, PayPalConfiguration configuration, PayPalProfileSharingDelegate @del);
 
 		[Wrap ("WeakProfileSharingDelegate")]
 		PayPalProfileSharingDelegate ProfileSharingDelegate { get; }
@@ -392,8 +392,8 @@ namespace PayPalIosBinding
 		NSObject WeakProfileSharingDelegate { get; }
 	}
 
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
+	//[Verify (ConstantsInterfaceAssociation)]
+	partial interface EnvironmentConstants
 	{
 		// extern NSString *const PayPalEnvironmentProduction;
 		[Field ("PayPalEnvironmentProduction")]
@@ -425,7 +425,7 @@ namespace PayPalIosBinding
 		// +(NSString *)clientMetadataID;
 		[Static]
 		[Export ("clientMetadataID")]
-		[Verify (MethodToProperty)]
+		//[Verify (MethodToProperty)]
 		string ClientMetadataID { get; }
 
 		// +(NSString *)applicationCorrelationIDForEnvironment:(NSString *)environment __attribute__((deprecated("Use clientMetadataID instead.")));
@@ -441,7 +441,7 @@ namespace PayPalIosBinding
 		// +(NSString *)libraryVersion;
 		[Static]
 		[Export ("libraryVersion")]
-		[Verify (MethodToProperty)]
+		//[Verify (MethodToProperty)]
 		string LibraryVersion { get; }
 	}
 }
