@@ -337,9 +337,9 @@ namespace PayPalIosBinding
 	[BaseType (typeof(UINavigationController))]
 	interface PayPalPaymentViewController
 	{
-		// -(instancetype)initWithPayment:(PayPalPayment *)payment configuration:(PayPalConfiguration *)configuration delegate:(id<PayPalPaymentDelegate>)del;
+		// -(instancetype)initWithPayment:(PayPalPayment *)payment configuration:(PayPalConfiguration *)configuration delegate:(id<PayPalPaymentDelegate>)payPalPaymentDelegate;
 		[Export ("initWithPayment:configuration:delegate:")]
-		IntPtr Constructor (PayPalPayment payment, PayPalConfiguration configuration, PayPalPaymentDelegate @del);
+		IntPtr Constructor (PayPalPayment payment, PayPalConfiguration configuration, PayPalPaymentDelegate @payPalPaymentDelegate);
 
 		[Wrap ("WeakPaymentDelegate")]
 		PayPalPaymentDelegate PaymentDelegate { get; }
